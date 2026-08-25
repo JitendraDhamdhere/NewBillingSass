@@ -20,6 +20,7 @@ import {
   X,
   Building,
   LucideIcon,
+  Tag,
 } from 'lucide-react'
 
 interface SidebarItem {
@@ -30,13 +31,17 @@ interface SidebarItem {
 
 const navigation: SidebarItem[] = [
   { name: 'Dashboard', href: '/dashboard', icon: Home },
+  { name: 'Invoices / Bills', href: '/dashboard/invoices', icon: FileText },
   { name: 'Customers', href: '/dashboard/customers', icon: Users },
-  { name: 'Bills / Invoices', href: '/dashboard/bills', icon: FileText },
+  { name: 'Services & Catalog', href: '/dashboard/services', icon: Tag },
   { name: 'Receipts', href: '/dashboard/receipts', icon: ArrowUpRight },
   { name: 'Payments', href: '/dashboard/payments', icon: ArrowDownLeft },
   { name: 'Expenses', href: '/dashboard/expenses', icon: DollarSign },
+  { name: 'Capital Ledger', href: '/dashboard/capital-ledger', icon: Building },
   { name: 'Outstanding', href: '/dashboard/outstanding', icon: AlertTriangle },
   { name: 'Reports', href: '/dashboard/reports', icon: BarChart3 },
+  { name: 'Team & Security', href: '/dashboard/team', icon: Users },
+  { name: 'Settings', href: '/dashboard/settings', icon: Building },
 ]
 
 interface DashboardShellProps {

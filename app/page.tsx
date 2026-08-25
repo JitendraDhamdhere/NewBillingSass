@@ -1,255 +1,224 @@
-import * as React from 'react'
 import Link from 'next/link'
-import {
-  Building2,
-  CheckCircle,
-  FileText,
-  ShieldCheck,
-  Zap,
-  TrendingUp,
-  Smartphone,
-  MessageSquare,
-} from 'lucide-react'
+import { ArrowRight, CheckCircle2, FileText, Zap, BarChart3, Shield } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background font-sans">
-      {/* Navigation Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
-        <div className="container mx-auto flex h-16 items-center justify-between px-6">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
+      {/* Navbar */}
+      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Building2 className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold tracking-tight text-foreground">
-              VyaapaarBill
-            </span>
+            <Zap className="h-6 w-6 text-primary" />
+            <span className="font-bold text-xl tracking-tight">BillingSaaS</span>
           </div>
-          <nav className="hidden md:flex gap-6">
-            <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-              Features
-            </a>
-            <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-              Pricing
-            </a>
-            <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-              About
-            </a>
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
+            <Link href="#features" className="hover:text-primary transition-colors">Features</Link>
+            <Link href="#pricing" className="hover:text-primary transition-colors">Pricing</Link>
+            <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Link
-              href="/login"
-              className="text-sm font-semibold text-muted-foreground hover:text-foreground"
-            >
-              Sign In
+            <Link href="/login" className="text-sm font-semibold hover:text-primary transition-colors">
+              Log In
             </Link>
-            <Link
-              href="/register"
-              className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow hover:bg-primary/90"
-            >
-              Get Started
-            </Link>
+            <Button asChild className="font-bold">
+              <Link href="/register">Start Free Trial</Link>
+            </Button>
           </div>
         </div>
       </header>
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 md:py-28 bg-gradient-to-b from-primary/5 via-transparent to-transparent">
-          <div className="container mx-auto px-6 text-center max-w-4xl">
-            <div className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-sm text-muted-foreground mb-6">
-              <Zap className="h-4 w-4 text-primary" />
-              <span>Slick, fast accounting for Indian small businesses</span>
+        <section className="py-24 md:py-32 overflow-hidden relative">
+          <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:32px_32px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background" />
+          
+          <div className="container mx-auto px-4 relative text-center max-w-4xl space-y-8">
+            <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-muted/50 text-muted-foreground">
+              <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
+              Designed for Indian SMBs & Enterprises
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-              Bill Customers. Track Payments. <br />
-              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                Know Your Profit.
-              </span>
+            
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1]">
+              Bill customers. <span className="text-primary">Track payments.</span> Know your profit.
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              A billing, receipts, payments, and outstanding management SaaS that takes just 15
-              seconds to perform any action.
+            
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              The ultimate financial engine for your business. Generate GST-ready invoices, accept UPI payments, send WhatsApp receipts, and track your true net operating profit instantly.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                href="/register"
-                className="rounded-md bg-primary px-8 py-3 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90"
-              >
-                Start Free Trial
-              </Link>
-              <Link
-                href="/login"
-                className="rounded-md border border-input bg-background px-8 py-3 text-base font-semibold hover:bg-accent hover:text-accent-foreground"
-              >
-                Sign In
-              </Link>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <Button size="lg" asChild className="h-12 px-8 font-bold text-base w-full sm:w-auto">
+                <Link href="/register">
+                  Start Your 14-Day Free Trial <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild className="h-12 px-8 font-bold text-base w-full sm:w-auto bg-background/50 backdrop-blur">
+                <Link href="#pricing">View Pricing</Link>
+              </Button>
             </div>
+            <p className="text-sm text-muted-foreground mt-4">No credit card required. Cancel anytime.</p>
           </div>
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-20 border-t">
-          <div className="container mx-auto px-6 max-w-6xl">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                Everything you need to manage business cashflow
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Simplify your day-to-day operation with tools built specifically for speed.
-              </p>
+        <section id="features" className="py-24 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Everything you need to run your business</h2>
+              <p className="text-muted-foreground text-lg">Stop juggling spreadsheets. Unify your invoicing, expenses, and accounting in one powerful platform.</p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <FileText className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-lg font-bold">Fast Invoicing</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Create compliant GST and non-GST invoices in under 15 seconds. Share via WhatsApp.
-                </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-background p-8 rounded-2xl border shadow-sm space-y-4 hover:border-primary/50 transition-colors">
+                <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                  <FileText className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-bold">Dynamic Invoicing</h3>
+                <p className="text-muted-foreground leading-relaxed">Create professional bills with automated tax calculations, non-floating decimal accuracy, and PDF generation.</p>
               </div>
-
-              <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <TrendingUp className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-lg font-bold">Outstanding Ledger</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Know exactly who owes you money and send direct payment reminders in one click.
-                </p>
+              
+              <div className="bg-background p-8 rounded-2xl border shadow-sm space-y-4 hover:border-primary/50 transition-colors">
+                <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                  <Zap className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-bold">UPI & WhatsApp</h3>
+                <p className="text-muted-foreground leading-relaxed">Print dynamic NPCI-compliant UPI QR codes on bills and send deep-link reminders directly to customers via WhatsApp.</p>
               </div>
-
-              <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <Smartphone className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-lg font-bold">Mobile First UX</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Full capabilities on mobile layout for active business owners who are always on the move.
-                </p>
-              </div>
-
-              <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <ShieldCheck className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-lg font-bold">Tenant Isolation</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Strict Row Level Security guarantees your client data is completely hidden from other users.
-                </p>
-              </div>
-
-              <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <MessageSquare className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-lg font-bold">WhatsApp & UPI Integration</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Print invoices, generate dynamic UPI payment QRs, and automate message alerts.
-                </p>
-              </div>
-
-              <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <Building2 className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-lg font-bold">Multi-Member Roles</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Define roles for Owner, Accountant, and Staff with granular permission policies.
-                </p>
+              
+              <div className="bg-background p-8 rounded-2xl border shadow-sm space-y-4 hover:border-primary/50 transition-colors">
+                <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                  <BarChart3 className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-bold">Financial Analytics</h3>
+                <p className="text-muted-foreground leading-relaxed">Real-time Profit & Loss statements separating operating revenue from capital ledger loans and overhead expenses.</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Pricing Section */}
-        <section id="pricing" className="py-20 border-t bg-muted/30">
-          <div className="container mx-auto px-6 max-w-4xl">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                Simple, transparent pricing
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Choose the best workspace setup for your business scale.
-              </p>
+        <section id="pricing" className="py-24">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Simple, transparent pricing</h2>
+              <p className="text-muted-foreground text-lg">Choose the plan that fits your business needs. Upgrade as you grow.</p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2">
-              {/* Starter Plan */}
-              <div className="rounded-xl border bg-card p-8 shadow-sm flex flex-col justify-between">
-                <div>
-                  <h3 className="text-lg font-bold">Basic Vyaapaari</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Ideal for individual merchants and small retail shops.
-                  </p>
-                  <div className="mt-6 flex items-baseline gap-1">
-                    <span className="text-4xl font-extrabold tracking-tight text-foreground">
-                      ₹499
-                    </span>
-                    <span className="text-sm font-semibold text-muted-foreground">/month</span>
-                  </div>
-                  <ul className="mt-8 space-y-3">
-                    {['Unlimited Bills', 'Basic Ledger Management', '1 Business Workspace', 'WhatsApp Sharing'].map((feat) => (
-                      <li key={feat} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {/* STARTER */}
+              <div className="bg-background border rounded-3xl p-8 shadow-sm flex flex-col">
+                <h3 className="text-xl font-bold text-foreground mb-2">Starter</h3>
+                <div className="text-muted-foreground text-sm mb-6">Perfect for small freelancers</div>
+                <div className="mb-6">
+                  <span className="text-4xl font-extrabold tracking-tight">₹499</span>
+                  <span className="text-muted-foreground font-medium">/month</span>
                 </div>
-                <div className="mt-8">
-                  <Link
-                    href="/register"
-                    className="block text-center rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow hover:bg-primary/90"
-                  >
-                    Start Free Trial
-                  </Link>
-                </div>
+                <ul className="space-y-4 mb-8 flex-1 text-sm">
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-primary" /> Up to 100 Invoices/mo</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-primary" /> 2 Team Members</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-primary" /> WhatsApp Sharing</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-primary" /> Basic Reports</li>
+                </ul>
+                <Button variant="outline" className="w-full font-bold" asChild>
+                  <Link href="/register">Get Started</Link>
+                </Button>
               </div>
 
-              {/* Premium Plan */}
-              <div className="rounded-xl border-2 border-primary bg-card p-8 shadow-md flex flex-col justify-between relative">
-                <div className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
-                  Popular
+              {/* BUSINESS */}
+              <div className="bg-primary text-primary-foreground rounded-3xl p-8 shadow-xl flex flex-col relative scale-105 z-10 border-2 border-primary ring-4 ring-primary/20">
+                <div className="absolute top-0 right-8 transform -translate-y-1/2">
+                  <span className="bg-foreground text-background text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold">Vyapaar Pro</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Perfect for fast-growing businesses needing team access.
-                  </p>
-                  <div className="mt-6 flex items-baseline gap-1">
-                    <span className="text-4xl font-extrabold tracking-tight text-foreground">
-                      ₹999
-                    </span>
-                    <span className="text-sm font-semibold text-muted-foreground">/month</span>
-                  </div>
-                  <ul className="mt-8 space-y-3">
-                    {[
-                      'Everything in Basic',
-                      'Multi-User Roles (Staff, Accountant)',
-                      'GST Report Exports',
-                      'Dynamic UPI QRs',
-                      'Priority Support',
-                    ].map((feat) => (
-                      <li key={feat} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <h3 className="text-xl font-bold mb-2">Business</h3>
+                <div className="text-primary-foreground/80 text-sm mb-6">For growing SMBs & Agencies</div>
+                <div className="mb-6">
+                  <span className="text-4xl font-extrabold tracking-tight">₹1,299</span>
+                  <span className="text-primary-foreground/80 font-medium">/month</span>
                 </div>
-                <div className="mt-8">
-                  <Link
-                    href="/register"
-                    className="block text-center rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow hover:bg-primary/90"
-                  >
-                    Start Free Trial
-                  </Link>
+                <ul className="space-y-4 mb-8 flex-1 text-sm font-medium">
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-background" /> Up to 1,000 Invoices/mo</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-background" /> 5 Team Members (RBAC)</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-background" /> WhatsApp & UPI QR</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-background" /> Advanced P&L Reports</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-background" /> Capital Ledger</li>
+                </ul>
+                <Button variant="secondary" className="w-full font-bold text-primary" asChild>
+                  <Link href="/register">Get Started</Link>
+                </Button>
+              </div>
+
+              {/* PRO */}
+              <div className="bg-background border rounded-3xl p-8 shadow-sm flex flex-col">
+                <h3 className="text-xl font-bold text-foreground mb-2">Pro</h3>
+                <div className="text-muted-foreground text-sm mb-6">For large scale enterprises</div>
+                <div className="mb-6">
+                  <span className="text-4xl font-extrabold tracking-tight">₹2,499</span>
+                  <span className="text-muted-foreground font-medium">/month</span>
                 </div>
+                <ul className="space-y-4 mb-8 flex-1 text-sm">
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-primary" /> Unlimited Invoices</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-primary" /> Unlimited Team Members</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-primary" /> Custom Roles & Permissions</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-primary" /> Priority Support</li>
+                </ul>
+                <Button variant="outline" className="w-full font-bold" asChild>
+                  <Link href="/register">Contact Sales</Link>
+                </Button>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Security & Trust */}
+        <section className="py-24 bg-foreground text-background">
+          <div className="container mx-auto px-4 text-center">
+            <Shield className="h-16 w-16 mx-auto mb-6 text-muted" />
+            <h2 className="text-3xl font-bold mb-6">Enterprise-Grade Security</h2>
+            <p className="text-lg text-muted max-w-2xl mx-auto mb-8">
+              Your financial data is protected by strict Multi-Tenant Row Level Security (RLS) policies, immutable audit trails, and bank-grade encryption protocols.
+            </p>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-background py-8">
-        <div className="container mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2">
-            <Building2 className="h-5 w-5 text-primary" />
-            <span className="font-semibold text-foreground">VyaapaarBill</span>
+      <footer className="bg-muted py-12 border-t">
+        <div className="container mx-auto px-4 grid md:grid-cols-4 gap-8 text-sm">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 text-foreground">
+              <Zap className="h-5 w-5 text-primary" />
+              <span className="font-bold text-lg">BillingSaaS</span>
+            </div>
+            <p className="text-muted-foreground">Modern financial operating system for Indian businesses.</p>
           </div>
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} VyaapaarBill Inc. All rights reserved.
-          </p>
+          <div>
+            <h4 className="font-bold text-foreground mb-4">Product</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><Link href="#features" className="hover:text-primary">Features</Link></li>
+              <li><Link href="#pricing" className="hover:text-primary">Pricing</Link></li>
+              <li><Link href="/login" className="hover:text-primary">Log In</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-foreground mb-4">Legal</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><Link href="/privacy" className="hover:text-primary">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-primary">Terms of Service</Link></li>
+              <li><Link href="/refunds" className="hover:text-primary">Refund Policy</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-foreground mb-4">Support</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><a href="mailto:support@billingsaas.com" className="hover:text-primary">Contact Us</a></li>
+              <li>Help Center</li>
+            </ul>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-12 pt-8 border-t text-center text-muted-foreground text-xs">
+          &copy; {new Date().getFullYear()} BillingSaaS Inc. All rights reserved.
         </div>
       </footer>
     </div>

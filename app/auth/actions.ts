@@ -94,12 +94,13 @@ export async function createBusinessAction(state: ActionState, formData: FormDat
     return { error: 'Not authenticated', success: false }
   }
 
+  // Pre-generate UUID so we don't need to .select() and trigger RLS SELECT errors
+  const businessId = crypto.randomUUID()
+
   // Insert business
-  const { data: business, error: businessError } = await supabase
+  const { error: businessError } = await supabase
     .from('businesses')
-    .insert({ name })
-    .select()
-    .single()
+    .insert({ id: businessId, name })
 
   if (businessError) {
     return { error: businessError.message, success: false }
@@ -107,7 +108,7 @@ export async function createBusinessAction(state: ActionState, formData: FormDat
 
   // Insert membership as OWNER
   const { error: memberError } = await supabase.from('business_members').insert({
-    business_id: business.id,
+    business_id: businessId,
     user_id: user.id,
     role: 'OWNER',
   })
